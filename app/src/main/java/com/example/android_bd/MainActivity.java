@@ -6,13 +6,15 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.database.Cursor;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     Button btnSave, btnConsult, btnAlter, btnExclude;
 
     EditText txtCode, txtName, txtEmail;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,5 +71,73 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
             clear();
         }
+    }
+
+    private void consult() {
+        int txtCode = Integer.parseInt(code.getText().toString());
+
+        controllerDataBase db = new controllerDataBase(getBaseContext());
+
+        Cursor data = db.loadDataByCode(txtCode);
+
+        if (data.moveToFirst()) {
+            name.setText(data.getString(1));
+            email.setText(data.getString(2));
+        } else {
+            String msg= "Código não cadastrado.";
+            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+            clear();
+        }
+    }
+
+    public void alter() {
+        int id = Integer.parseInt(code.getText().toString());
+        String txtName  = name.getText().toString();
+        String txtEmail = email.getText().toString();
+        String msg = "";
+        boolean error = false;
+
+        if (code.getText().toString().length() == 0) {
+            msg = "Preencha o campo ID para alterar os dados";
+            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+            error = true;
+        }
+
+        if (txtName.length() == 0) {
+            msg="Preencha o campo Nome";
+            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+            error = true;
+        }
+
+        if (txtEmail.length() < 10) {
+            msg="Preencha corretamente o campo Email";
+            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+            error = true;
+        }
+
+        if (error == false) {
+            controllerDataBase db = new controllerDataBase(getBaseContext());
+            msg = db.alterData(id, txtName, txtEmail);
+            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+            clear();
+        }
+    }
+
+    public void exclude() {
+        int id = Integer.parseInt(code.getText().toString());
+
+        controllerDataBase db = new controllerDataBase(getBaseContext());
+
+        String res ;
+        res = db.excludeData(id) ;
+
+        Toast.makeText(getApplicationContext(), res, Toast.LENGTH_LONG).show() ;
+        clear() ;
+    }
+
+    public void clear() {
+        code.setText("");
+        name.setText("");
+        email.setText("");
     }
 }
