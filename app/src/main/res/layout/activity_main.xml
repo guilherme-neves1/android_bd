@@ -7,21 +7,31 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Contatos"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+    />
+
+    <TextView
         android:id="@+id/Code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="48dp"
         android:padding="@dimen/padding_medium"
         android:text="Código:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/Title"
     />
-
 
     <EditText
         android:id="@+id/txtCode"
@@ -29,19 +39,16 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/Code"
         android:layout_alignBottom="@+id/Code"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="42dp"
         android:layout_marginEnd="22dp"
         android:layout_marginRight="22dp"
         android:layout_toRightOf="@+id/Code"
         android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Code"
-        app:layout_constraintTop_toBottomOf="textView">
-
+        app:layout_constraintTop_toBottomOf="@id/Title">
         <requestFocus />
-
     </EditText>
 
     <TextView
@@ -50,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Code"
         android:layout_alignLeft="@+id/Email"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
         android:padding="@dimen/padding_medium"
         android:text="Nome:"
@@ -59,23 +66,116 @@
         app:layout_constraintTop_toBottomOf="@+id/Code"
     />
 
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="268dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtCode"
+        android:layout_alignTop="@+id/Name"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="22dp"
+        android:ems="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/Name"
+        app:layout_constraintTop_toBottomOf="@+id/txtCode">
+    </EditText>
+
     <TextView
         android:id="@+id/Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Code"
         android:layout_alignRight="@+id/Code"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:padding="@dimen/padding_medium"
         android:text="Email:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Name"
-        />
+    />
 
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="268dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtName"
+        android:layout_alignTop="@+id/Email"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="22dp"
+        android:ems="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/Email"
+        app:layout_constraintTop_toBottomOf="@+id/txtName"
+    />
 
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="153dp"
+        android:layout_height="46dp"
+        android:layout_alignBaseline="@+id/btnConsult"
+        android:layout_alignLeft="@+id/Email"
+        android:layout_alignBottom="@+id/btnConsult"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="52dp"
+        android:text="Salvar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
+    />
 
+    <Button
+        android:id="@+id/btnConsult"
+        android:layout_width="153dp"
+        android:layout_height="46dp"
+        android:layout_alignBaseline="@+id/btnExclude"
+        android:layout_alignLeft="@+id/txtEmail"
+        android:layout_alignBottom="@+id/btnExclude"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:text="Consultar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSave"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
+    />
 
+    <Button
+        android:id="@+id/btnAlter"
+        android:layout_width="153dp"
+        android:layout_height="46dp"
+        android:layout_alignBaseline="@+id/btnConsult"
+        android:layout_alignBottom="@+id/btnConsult"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="36dp"
+        android:layout_toRightOf="@+id/btnConsult"
+        android:text="Alterar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSave"
+    />
+
+    <Button
+        android:id="@+id/btnExclude"
+        android:layout_width="153dp"
+        android:layout_height="46dp"
+        android:layout_below="@+id/txtEmail"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:text="Excluir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnAlter"
+        app:layout_constraintTop_toBottomOf="@+id/btnConsult"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
