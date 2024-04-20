@@ -14,16 +14,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     Button btnSave, btnConsult, btnAlter, btnExclude;
 
-    EditText txtCode, txtName, txtEmail;
+    EditText code, name, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtCode = (EditText) findViewById(R.id.txtCode);
-        txtName = (EditText) findViewById(R.id.txtName);
-        txtEmail = (EditText) findViewById(R.id.txtEmail);
+        code = (EditText) findViewById(R.id.txtCode);
+        name = (EditText) findViewById(R.id.txtName);
+        email = (EditText) findViewById(R.id.txtEmail);
 
         btnSave = (Button) findViewById(R.id.btnSave);
         btnConsult = (Button) findViewById(R.id.btnConsult);
